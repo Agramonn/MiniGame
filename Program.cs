@@ -39,6 +39,12 @@ string player = states[0];
 // Index of the current food
 int food = 0;
 
+// Index of the current state
+int state = 0;
+
+// Speed of the player
+int speed = 0;
+
 // (Optional) False = detect nondirectional key input to exit the program
 bool nonDirectionalKey = false;
 
@@ -51,6 +57,8 @@ while (!shouldExit)
         break;
     }
     Move(nonDirectionalKey);
+    ConsumeFood();
+    MovementAfected();
 }
 // Exit the game and clear de console if the console was resized
 void changeSizeConsole()
@@ -66,6 +74,35 @@ void changeSizeConsole()
 bool TerminalResized() 
 {
     return height != Console.WindowHeight - 1 || width != Console.WindowWidth - 5;
+}
+
+// Make player consume food
+void ConsumeFood()
+{
+    if (foodX == playerX && foodY == playerY)
+    {
+        ChangePlayer(food);
+        ShowFood();
+    }
+}
+
+// Afect the movement for the player depending on which food consumed
+void MovementAfected()
+{
+    switch (state)
+    {
+        case 1:
+            // Increase the right and left movement by 3.
+            speed = 1;
+            break;
+        case 2:
+            FreezePlayer();
+            speed = 0;
+            break;
+        default:
+            speed = 0;
+            break;
+    }
 }
 
 // Displays random food at a random location
@@ -84,9 +121,10 @@ void ShowFood()
 }
 
 // Changes the player to match the food consumed
-void ChangePlayer() 
+void ChangePlayer(int consumedFood) 
 {
-    player = states[food];
+    state = consumedFood;
+    player = states[consumedFood];
     Console.SetCursorPosition(playerX, playerY);
     Console.Write(player);
 }
@@ -96,6 +134,7 @@ void FreezePlayer()
 {
     System.Threading.Thread.Sleep(1000);
     player = states[0];
+    state = 0;
 }
 
 // Reads directional input from the Console and moves the player
@@ -113,10 +152,12 @@ void Move(bool nonDirectionalInput = true)
             playerY++; 
             break;
 		case ConsoleKey.LeftArrow:  
-            playerX--; 
+            playerX--;
+            playerX += (speed * -1); 
             break;
 		case ConsoleKey.RightArrow: 
             playerX++; 
+            playerX += speed;
             break;
 		case ConsoleKey.Escape:  
             shouldExit = true; 
