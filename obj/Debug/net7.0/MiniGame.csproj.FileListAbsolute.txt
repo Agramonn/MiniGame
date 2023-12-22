@@ -1,0 +1,14 @@
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\bin\Debug\net7.0\MiniGame.exe
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\bin\Debug\net7.0\MiniGame.deps.json
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\bin\Debug\net7.0\MiniGame.runtimeconfig.json
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\bin\Debug\net7.0\MiniGame.dll
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\bin\Debug\net7.0\MiniGame.pdb
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\obj\Debug\net7.0\MiniGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\obj\Debug\net7.0\MiniGame.AssemblyInfoInputs.cache
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\obj\Debug\net7.0\MiniGame.AssemblyInfo.cs
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\obj\Debug\net7.0\MiniGame.csproj.CoreCompileInputs.cache
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\obj\Debug\net7.0\MiniGame.dll
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\obj\Debug\net7.0\refint\MiniGame.dll
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\obj\Debug\net7.0\MiniGame.pdb
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\obj\Debug\net7.0\MiniGame.genruntimeconfig.cache
+C:\Users\buyer\Documents\CsharpProjects\MiniGame\obj\Debug\net7.0\ref\MiniGame.dll

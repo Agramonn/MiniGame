@@ -39,12 +39,29 @@ string player = states[0];
 // Index of the current food
 int food = 0;
 
+// (Optional) False = detect nondirectional key input to exit the program
+bool nonDirectionalKey = false;
+
 InitializeGame();
 while (!shouldExit) 
 {
-    Move();
+    if (TerminalResized())
+    {
+        changeSizeConsole();
+        break;
+    }
+    Move(nonDirectionalKey);
 }
-
+// Exit the game and clear de console if the console was resized
+void changeSizeConsole()
+{
+    if (TerminalResized())
+    {
+        Console.Clear();
+        Console.WriteLine("Console was resized. Program exiting.");
+        shouldExit = true;
+    }
+}
 // Returns true if the Terminal was resized 
 bool TerminalResized() 
 {
@@ -82,7 +99,7 @@ void FreezePlayer()
 }
 
 // Reads directional input from the Console and moves the player
-void Move() 
+void Move(bool nonDirectionalInput = true) 
 {
     int lastX = playerX;
     int lastY = playerY;
@@ -101,8 +118,14 @@ void Move()
 		case ConsoleKey.RightArrow: 
             playerX++; 
             break;
-		case ConsoleKey.Escape:     
+		case ConsoleKey.Escape:  
             shouldExit = true; 
+            break;
+        default:
+            if(!nonDirectionalInput)
+            {
+                shouldExit = true;
+            }
             break;
     }
 
@@ -119,7 +142,12 @@ void Move()
 
     // Draw the player at the new location
     Console.SetCursorPosition(playerX, playerY);
-    Console.Write(player);
+    if (shouldExit) 
+    {
+        Console.Clear();
+        Console.WriteLine("You exit from the program...");
+    }
+    else{Console.Write(player);}
 }
 
 // Clears the console, displays the food and player
